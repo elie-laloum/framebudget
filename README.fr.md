@@ -1,19 +1,7 @@
 <p align="right"><a href="README.md">English</a></p>
-<img src="assets/cover.svg" alt="FrameBudget" width="100%">
+<img src="assets/cover-v2.png" alt="FrameBudget" width="100%">
 
-<!-- project badges -->
-<p>
-<a href="README.md"><img src="https://img.shields.io/badge/version-0.1.0-24334b?style=flat-square" alt="Version 0.1.0"></a>
-<a href="https://github.com/elie-laloum/framebudget/actions/workflows/ci.yml"><img src="https://github.com/elie-laloum/framebudget/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
-<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-ffcf83?style=flat-square&amp;labelColor=172033" alt="MIT"></a>
-<a href="README.md#see-it-in-action"><img src="https://img.shields.io/badge/demo-watch-ffcf83?style=flat-square&amp;labelColor=172033" alt="Watch the demo"></a>
-</p>
-<p>
-<a href="README.md#quick-start"><img src="https://img.shields.io/badge/-Python%203.10%2B-ffcf83?style=flat-square&amp;labelColor=172033&amp;logo=python&amp;logoColor=white" alt="Python 3.10+"></a>
-<a href="README.md#quick-start"><img src="https://img.shields.io/badge/-FFmpeg-ffcf83?style=flat-square&amp;labelColor=172033&amp;logo=ffmpeg&amp;logoColor=white" alt="FFmpeg"></a>
-<a href="README.md#quick-start"><img src="https://img.shields.io/badge/-VMAF-ffcf83?style=flat-square&amp;labelColor=172033" alt="VMAF"></a>
-</p>
-<!-- /project badges -->
+[![CI](https://img.shields.io/github/actions/workflow/status/elie-laloum/framebudget/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/elie-laloum/framebudget/actions/workflows/ci.yml) [![License](https://img.shields.io/badge/license-MIT-586475?style=flat-square)](LICENSE)
 
 # FrameBudget
 
@@ -27,7 +15,7 @@
 
 [Vidéo MP4](assets/demo.mp4) · [Reproduire la démo](docs/demo.md)
 
-## Essayer la version 0.1
+## Essayer la version 0.2
 
 ```sh
 git clone https://github.com/elie-laloum/framebudget.git
@@ -41,7 +29,7 @@ La démonstration génère une vidéo de trois secondes, compare trois réglages
 
 ## Utilisation et périmètre
 
-L’outil explore une grille CRF/preset, mesure VMAF ou PSNR et produit un rapport JSON/HTML. FFmpeg, ffprobe et libx264 sont nécessaires ; VMAF nécessite libvmaf. La version 0.1 vise les vidéos SDR avec un seul flux vidéo et une sortie MKV. Les extraits ne garantissent pas la qualité du fichier entier : activez `--verify-quality` pour la mesurer.
+L’outil explore une grille CRF/preset, mesure VMAF ou PSNR et produit un rapport JSON/HTML. FFmpeg, ffprobe et libx264 sont nécessaires ; VMAF nécessite libvmaf. La version 0.2 vise les vidéos SDR avec un seul flux vidéo et une sortie MKV. Les extraits ne garantissent pas la qualité du fichier entier : activez `--verify-quality` pour la mesurer.
 
 [Configuration complète et contrat de l’API](README.md#use-it-on-your-project) · [Limites détaillées](README.md#boundaries) · [Contribuer](CONTRIBUTING.md)
 

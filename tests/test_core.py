@@ -1,5 +1,6 @@
 import unittest
-from framebudget.core import sample_offsets, pareto, BudgetError
+
+from framebudget.core import BudgetError, pareto, sample_offsets
 
 
 class CoreTests(unittest.TestCase):
@@ -9,6 +10,16 @@ class CoreTests(unittest.TestCase):
         with self.assertRaises(BudgetError):
             sample_offsets(10, 0, 2)
 
+    def test_non_finite_sampling_inputs_are_rejected(self):
+        for duration, count, seconds in [
+            (float("nan"), 3, 2),
+            (10, 3, float("inf")),
+            (10, 1.5, 2),
+            (10, True, 2),
+        ]:
+            with self.assertRaises(BudgetError):
+                sample_offsets(duration, count, seconds)
+
     def test_frontier_preserves_real_tradeoffs(self):
         small = dict(sample_bytes=10, encode_seconds=3, quality=90)
         fast = dict(sample_bytes=15, encode_seconds=1, quality=95)
@@ -16,5 +27,5 @@ class CoreTests(unittest.TestCase):
         self.assertEqual(pareto([small, fast, worse]), [small, fast])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

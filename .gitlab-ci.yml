@@ -1,0 +1,13 @@
+image: python:3.14
+stages: [verify]
+verify:
+  stage: verify
+  before_script:
+    - apt-get update && apt-get install -y ffmpeg
+    - python -m pip install -e '.[dev]'
+  script:
+    - python -m ruff check .
+    - python -m ruff format --check .
+    - python -m mypy framebudget
+    - python -m unittest discover -s tests -v
+    - python -m build

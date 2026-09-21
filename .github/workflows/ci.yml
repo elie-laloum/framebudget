@@ -1,18 +1,22 @@
-name: Tests
+name: CI
 on: [push, pull_request]
 permissions:
   contents: read
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.12', '3.14']
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
-          python-version: '3.12'
+          python-version: ${{ matrix.python }}
       - run: sudo apt-get update && sudo apt-get install -y ffmpeg
-      - run: python -m pip install .
+      - run: python -m pip install -e '.[dev]'
+      - run: python -m ruff check .
+      - run: python -m ruff format --check .
+      - run: python -m mypy framebudget
       - run: python -m unittest discover -s tests -v
-      - run: python examples/demo.py
-        env:
-          FRAMEBUDGET_METRIC: psnr
+      - run: python -m build
