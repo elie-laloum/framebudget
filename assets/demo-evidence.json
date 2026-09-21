@@ -1,0 +1,105 @@
+{
+  "recordedAt": "2026-09-21T12:49:12.717Z",
+  "source": "Runnable repository demo; presentation timing edited",
+  "observed": {
+    "status": "encoded",
+    "metric": "vmaf",
+    "target": 80,
+    "candidates": [
+      {
+        "crf": 18,
+        "preset": "fast",
+        "quality": 98.655776,
+        "sample_scores": [
+          98.655776,
+          99.417306
+        ],
+        "sample_bytes": 50118,
+        "encode_seconds": 0.078,
+        "estimated_video_bytes": 150354
+      },
+      {
+        "crf": 28,
+        "preset": "fast",
+        "quality": 92.759707,
+        "sample_scores": [
+          92.759707,
+          93.794781
+        ],
+        "sample_bytes": 25497,
+        "encode_seconds": 0.094,
+        "estimated_video_bytes": 76491
+      },
+      {
+        "crf": 38,
+        "preset": "fast",
+        "quality": 71.63588,
+        "sample_scores": [
+          71.63588,
+          71.853536
+        ],
+        "sample_bytes": 17900,
+        "encode_seconds": 0.063,
+        "estimated_video_bytes": 53700
+      }
+    ],
+    "selected": {
+      "crf": 28,
+      "preset": "fast",
+      "quality": 92.759707,
+      "sample_scores": [
+        92.759707,
+        93.794781
+      ],
+      "sample_bytes": 25497,
+      "encode_seconds": 0.094,
+      "estimated_video_bytes": 76491
+    },
+    "final_quality": 94.484909
+  },
+  "scenes": [
+    {
+      "title": "Stop guessing your encode",
+      "lines": [
+        "$ python examples/demo.py",
+        "",
+        "Generated fixture: 3 seconds, 320 x 180",
+        "Metric: VMAF     Target: 80",
+        "Sample scenes: 2",
+        "Candidates: CRF 18 / 28 / 38, preset fast",
+        "",
+        "Real FFmpeg encodes. Real quality measurements."
+      ],
+      "tone": "normal"
+    },
+    {
+      "title": "Compare the measured tradeoffs",
+      "lines": [
+        "CRF   PRESET    MIN VMAF   SAMPLE SIZE",
+        "",
+        "18    fast      98.66      48.9 KiB",
+        "28    fast      92.76      24.9 KiB",
+        "38    fast      71.64      17.5 KiB",
+        "",
+        "Selected: CRF 28 / fast",
+        "Smallest sampled output meeting the target."
+      ],
+      "tone": "normal"
+    },
+    {
+      "title": "Verify the file you keep",
+      "lines": [
+        "Status: ENCODED",
+        "Full-file VMAF: 94.48",
+        "Required quality: 80",
+        "",
+        "Decode and duration checks passed.",
+        "Output: output.mkv",
+        "Reports: report.json + report.html",
+        "",
+        "Sample estimates are checked against the final file."
+      ],
+      "tone": "success"
+    }
+  ]
+}

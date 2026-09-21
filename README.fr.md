@@ -5,6 +5,14 @@
 
 **Comparez des réglages H.264 sur plusieurs extraits, choisissez un compromis taille–qualité mesuré et vérifiez l’encodage final.**
 
+## Voir la démo
+
+<a href="assets/demo.mp4"><img src="assets/demo.gif" alt="FrameBudget — démonstration enregistrée" width="100%"></a>
+
+<sub>Démo réellement exécutée, rejouée avec des annotations et un rythme adapté à la lecture.</sub>
+
+[Vidéo MP4](assets/demo.mp4) · [Reproduire la démo](docs/demo.md)
+
 ## Essayer la version 0.1
 
 ```sh
