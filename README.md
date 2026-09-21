@@ -1,7 +1,19 @@
 <p align="right"><a href="README.fr.md">Français</a></p>
 <img src="assets/cover.svg" alt="FrameBudget — Spend less time guessing your next encode." width="100%">
 
-[![CI](https://github.com/elie-laloum/framebudget/actions/workflows/ci.yml/badge.svg)](https://github.com/elie-laloum/framebudget/actions/workflows/ci.yml) ![Version](https://img.shields.io/badge/version-0.1.0-242b3a) [![License: MIT](https://img.shields.io/badge/license-MIT-242b3a)](LICENSE)
+<!-- project badges -->
+<p>
+<a href="README.md"><img src="https://img.shields.io/badge/version-0.1.0-24334b?style=flat-square" alt="Version 0.1.0"></a>
+<a href="https://github.com/elie-laloum/framebudget/actions/workflows/ci.yml"><img src="https://github.com/elie-laloum/framebudget/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-ffcf83?style=flat-square&amp;labelColor=172033" alt="MIT"></a>
+<a href="#see-it-in-action"><img src="https://img.shields.io/badge/demo-watch-ffcf83?style=flat-square&amp;labelColor=172033" alt="Watch the demo"></a>
+</p>
+<p>
+<a href="#quick-start"><img src="https://img.shields.io/badge/-Python%203.10%2B-ffcf83?style=flat-square&amp;labelColor=172033&amp;logo=python&amp;logoColor=white" alt="Python 3.10+"></a>
+<a href="#quick-start"><img src="https://img.shields.io/badge/-FFmpeg-ffcf83?style=flat-square&amp;labelColor=172033&amp;logo=ffmpeg&amp;logoColor=white" alt="FFmpeg"></a>
+<a href="#quick-start"><img src="https://img.shields.io/badge/-VMAF-ffcf83?style=flat-square&amp;labelColor=172033" alt="VMAF"></a>
+</p>
+<!-- /project badges -->
 
 **Compare H.264 settings on sampled scenes, choose a measured size–quality tradeoff, and verify the final encode.**
 
