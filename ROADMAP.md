@@ -1,15 +1,14 @@
-# Roadmap / Feuille de route
+# Roadmap
 
-Status: specification stage. Items below are planned, not shipped.
+## Shipped in 0.1
 
-- [ ] Probe SDR inputs and validate the supported FFmpeg build.
-- [ ] Explore a bounded libx264 CRF/preset search using representative samples.
-- [ ] Report quality, size and time trade-offs and distinguish estimates from measurements.
-- [ ] Validate final decoding and quality on a redistributable benchmark corpus.
-- [ ] Verify installation from a clean environment.
-- [ ] Publish a reproducible demonstration and English/French setup guides.
-- [ ] Publish the first version only after the documented behavior is tested.
+- Runnable CLI and local demonstration.
+- Automated tests around the core workflow and failure paths.
+- Inspectable reports and explicit operational limits.
 
-## Français
+## Next
 
-Le projet est au stade de la spécification. Les fonctions décrites sont à implémenter. La première version sera publiée avec une installation vérifiée, une démonstration reproductible et une documentation EN/FR.
+These are directions, not shipped capabilities.
+- Scene-aware sampling and repeatable benchmark corpora.
+- Additional encoders and rate-control strategies.
+- More input formats with explicit color and timestamp handling.

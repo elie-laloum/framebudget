@@ -1,54 +1,61 @@
-<p align="center"><strong>English</strong> · <a href="README.fr.md">Français</a></p>
+<p align="right"><a href="README.fr.md">Français</a></p>
+<img src="assets/hero.svg" alt="FrameBudget — Spend less time guessing your next encode." width="100%">
 
-<p align="center"><img src="assets/hero.svg" alt="FrameBudget — Find the encode that fits your constraints." width="100%"></p>
+[![CI](https://github.com/elie-laloum/framebudget/actions/workflows/ci.yml/badge.svg)](https://github.com/elie-laloum/framebudget/actions/workflows/ci.yml) ![Version](https://img.shields.io/badge/version-0.1.0-242b3a) [![License: MIT](https://img.shields.io/badge/license-MIT-242b3a)](LICENSE)
 
-# FrameBudget
+**Compare H.264 settings on sampled scenes, choose a measured size–quality tradeoff, and verify the final encode.**
 
-**Find the encode that fits your constraints.**
+Python 3.10+ · FFmpeg · VMAF · [Quick start](#quick-start) · [How it works](#how-it-works) · [Boundaries](#boundaries)
 
-A proposed open-source FFmpeg optimizer for exploring the trade-offs between video size, measured quality, and encoding time.
+## Why it exists
 
-> **In development.** This repository contains the initial specification and documentation. No executable release has shipped yet.
+### Search within a budget
+Explore an explicit CRF/preset grid until the search budget expires. Incomplete candidates never become winners.
 
+### See the tradeoffs
+JSON and standalone HTML reports show quality, sample size, encoding time and the Pareto frontier.
 
-**Original repository: [GitLab](https://gitlab.elielaloum.com/elielaloum/framebudget)** · [Public GitHub mirror](https://github.com/elie-laloum/framebudget). The GitLab origin is private and requires access. Code changes are integrated in GitLab and synchronized to GitHub.
+### Verify the output
+Optional full-file quality measurement complements decode, duration and audio/subtitle count checks before publishing the output.
 
+## Quick start
 
-## Make encoding decisions visible
-
-Choose a quality target and a search budget. FrameBudget should test candidate settings on representative segments, compare their outcomes, and explain the selected compromise before encoding the full file.
-
-```text
-Inspect → Sample → Explore settings → Compare trade-offs → Encode → Verify
+```sh
+git clone https://github.com/elie-laloum/framebudget.git
+cd framebudget
+python -m pip install .
+python -m unittest discover -s tests
+python examples/demo.py
 ```
 
-## First release scope
+Clone and run from source; these commands do not assume a package has been published to a registry.
 
-- Python CLI calling FFmpeg and ffprobe.
-- SDR input, preserved resolution, and libx264 encoding.
-- A bounded search across CRF values and presets.
-- Sample-based VMAF evaluation with an optional full-file quality verification.
-- JSON and HTML reports listing settings, measurements, estimates, and decisions.
+## How it works
 
-The search budget caps exploration; it is not a guarantee of total encoding time. Sample quality does not guarantee the same result across the entire video. If no candidate satisfies the constraints, the tool should report that outcome.
+`Sample → encode → score → compare → verify`
 
-## What must make it useful
+A generated three-second clip exercises real FFmpeg encoding and VMAF scoring. On the development run, CRF 28 / fast was selected from three candidates: minimum sample score 92.76, final-file VMAF 94.48 against a target of 80. These are fixture results, not general compression claims.
 
-[ab-av1](https://github.com/alexheretic/ab-av1) already supports CRF search and size/time estimates. FrameBudget's proposed angle is budgeted exploration and an explicit comparison of quality, size, and time. The implementation must earn that distinction in reproducible comparisons.
+## Use it on your project
 
-## The demo we will ship
+```sh
+framebudget input.mp4 --report result.json --html result.html --output result.mkv --budget 60 --min-quality 93 --verify-quality
+```
 
-A redistributable video corpus, candidate results, a trade-off chart, the selected settings, and a verified final file. Record hardware, encoder versions, sample selection, and total search cost. [VMAF](https://github.com/Netflix/vmaf) is a quality metric, not a promise of visually identical output.
+Use `--crfs 20 26 32 --presets fast medium` to define the candidates and `--samples 3 --sample-seconds 2` to define the sample coverage. The selected candidate has the smallest sampled output among those meeting the minimum quality target on every sampled scene.
 
-## Release requirements
+A run returns status 1 if no candidate meets the target or final verification fails; the report explains why. Status 2 means invalid input or configuration. Use `FFMPEG` and `FFPROBE` environment variables for the demo, or `--ffmpeg` / `--ffprobe` for the CLI.
 
-Preserve originals, verify final decoding and duration, document audio and subtitle handling, and distinguish measured results from estimates. HDR and additional encoders come after the initial scope is validated.
+## Boundaries
 
-## Help shape it
+Requires FFmpeg with libx264 and libvmaf, plus ffprobe. PSNR is available explicitly with --metric psnr --min-quality 35; its units differ from VMAF. v0.1 targets SDR, even-sized, single-video inputs and writes MKV. Sampling cannot guarantee whole-file quality. The search budget covers extraction, sample encoding and scoring; probing and final encoding are separate. Files are never overwritten.
 
-Useful early contributions: redistributable clips, benchmark reproductions, and difficult scenes. Installation instructions will be published after the supported FFmpeg configuration is verified.
+## Development
 
+Run `python -m unittest discover -s tests`. FFmpeg integration tests exercise actual encoding, full verification, an impossible quality target and budget exhaustion. They are skipped if FFmpeg is unavailable.
 
----
+[Contributing](CONTRIBUTING.md) · [Roadmap](ROADMAP.md) · [MIT license](LICENSE)
 
-[Roadmap](ROADMAP.md) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+[GitLab origin](https://gitlab.elielaloum.com/elielaloum/framebudget) · [GitHub mirror](https://github.com/elie-laloum/framebudget)
+
+The private GitLab repository is the source of record. This public mirror receives synchronized changes; GitLab access is required to view the origin.

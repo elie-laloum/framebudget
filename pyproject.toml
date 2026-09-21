@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "framebudget"
+version = "0.1.0"
+description = "Budgeted FFmpeg search with measured quality, size and encoding trade-offs"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Elie Laloum"}]
+dependencies = []
+
+[project.scripts]
+framebudget = "framebudget.cli:main"
+
+[tool.setuptools]
+packages = ["framebudget"]
+
+[project.urls]
+Repository = "https://gitlab.elielaloum.com/elielaloum/framebudget"
+Mirror = "https://github.com/elie-laloum/framebudget"
