@@ -1,5 +1,5 @@
 <p align="right"><a href="README.fr.md">Français</a></p>
-<img src="assets/hero.svg" alt="FrameBudget — Spend less time guessing your next encode." width="100%">
+<img src="assets/cover.svg" alt="FrameBudget — Spend less time guessing your next encode." width="100%">
 
 [![CI](https://github.com/elie-laloum/framebudget/actions/workflows/ci.yml/badge.svg)](https://github.com/elie-laloum/framebudget/actions/workflows/ci.yml) ![Version](https://img.shields.io/badge/version-0.1.0-242b3a) [![License: MIT](https://img.shields.io/badge/license-MIT-242b3a)](LICENSE)
 
